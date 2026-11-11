@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#21182e">
+<title>Sabina's Experiment ✨</title>
+
+<style>
+:root {
+  --bg:#f8f3f8;
+  --card:#ffffff;
+  --ink:#292033;
+  --muted:#81768a;
+  --pink:#eeb9d5;
+  --purple:#967bb8;
+  --line:#eee5f0;
+}
+*{box-sizing:border-box}
+body {
+  margin:0;
+  font-family:system-ui,-apple-system,sans-serif;
+  background:radial-gradient(circle at top left,#fce4f1,transparent 35%),
+  radial-gradient(circle at bottom right,#e9e2fa,transparent 35%),var(--bg);
+  color:var(--ink);
+}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.container{max-width:950px;margin:auto;padding:18px 15px 60px}
+header{display:flex;justify-content:space-between;align-items:center;padding:12px 2px 22px}
+.logo{font-weight:900;font-size:12px;letter-spacing:3px}
+.logo span{color:#b477a0}
+.small{font-size:12px;color:var(--muted)}
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(140deg,#21182e,#493453,#795779);
+  border-radius:27px;padding:55px 30px;color:white;
+  min-height:360px;display:flex;flex-direction:column;justify-content:center;
+  box-shadow:0 25px 65px #34204025;
+}
+.hero:after{
+  content:"";position:absolute;width:260px;height:260px;
+  border:1px solid #ffffff30;border-radius:50%;
+  right:-80px;top:-80px;
+}
+.eyebrow{color:#f2bdd9;font-size:11px;letter-spacing:3px;font-weight:800}
+h1{font-size:clamp(42px,9vw,76px);line-height:.96;letter-spacing:-4px;margin:18px 0}
+h1 span{color:#f0b9d6}
+.hero p{color:#e8dce9;line-height:1.7;max-width:440px}
+.butterfly{position:absolute;right:9%;bottom:12%;font-size:75px;animation:float 4s infinite}
+@keyframes float{50%{transform:translateY(-15px) rotate(8deg)}}
+.primary,.secondary{
+  border:0;border-radius:30px;padding:13px 19px;font-weight:800;
+  transition:.2s;
+}
+.primary{background:#efbad6;color:#35243a}
+.secondary{background:#f5edf7;color:#493453;border:1px solid var(--line)}
+button:hover{transform:translateY(-2px)}
+.intro{color:var(--muted);font-size:14px;line-height:1.7;margin:22px 2px}
+.heading{margin:35px 2px 16px}
+.heading h2{margin:0;font-size:23px;letter-spacing:-1px}
+.heading p{font-size:13px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.tile{
+  background:#ffffffdc;border:1px solid white;border-radius:21px;
+  padding:19px;text-align:left;color:var(--ink);
+  min-height:155px;box-shadow:0 12px 35px #3420400b;
+}
+.tile .emoji{font-size:27px}
+.tile h3{margin:10px 0 5px;font-size:17px}
+.tile p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+.tile small{display:block;margin-top:13px;color:#a36c96;font-weight:900}
+.panel{
+  background:var(--card);border:1px solid white;border-radius:23px;
+  padding:23px;margin-top:20px;box-shadow:0 15px 40px #3420400c;
+}
+.hidden{display:none}
+.back{border:0;background:none;color:#a36c96;font-weight:900;padding:0 0 18px}
+.tag{font-size:10px;letter-spacing:2px;color:#a36c96;font-weight:900}
+.panel h2{font-size:22px;letter-spacing:-1px}
+.sub{color:var(--muted);font-size:13px;line-height:1.6}
+.question{font-size:18px;font-weight:800;margin:22px 0 13px}
+.answers{display:grid;gap:9px}
+.answer{
+  background:white;border:1px solid var(--line);border-radius:13px;
+  padding:13px;text-align:left;color:var(--ink);
+}
+.answer.selected{background:#fbf0f7;border-color:#c68ab6}
+.progress{height:5px;background:#f0e9f2;border-radius:10px;margin:15px 0}
+.progress span{display:block;height:100%;background:#b47ba9;width:0;transition:.3s}
+.box{
+  padding:22px;background:linear-gradient(130deg,#f9eaf3,#eeeafd);
+  border-radius:17px;font-weight:750;font-size:18px;line-height:1.6;
+  min-height:110px;display:flex;align-items:center;
+}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:17px}
+.field{
+  width:100%;border:1px solid var(--line);border-radius:13px;
+  padding:14px;outline:none;background:white;color:var(--ink);
+}
+textarea.field{min-height:100px;resize:vertical}
+.result{background:#f8edf5;border-radius:16px;padding:17px;line-height:1.6}
+.footer{text-align:center;color:#938797;font-size:12px;margin-top:35px;line-height:2}
+@media(min-width:650px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:380px){.hero{padding:38px 22px}.grid{gap:9px}.tile{padding:14px}}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+  <div class="logo">A LITTLE PROJECT <span>✦</span></div>
+  <div class="small">Made for Sabina 😂</div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">A TINY CORNER OF THE INTERNET</div>
+  <h1>SABINA'S<br><span>EXPERIMENT.</span></h1>
+  <p>A few questions, random surprises, little challenges and absolutely no serious scientific conclusions.</p>
+  <button class="primary" onclick="document.querySelector('#explore').scrollIntoView({behavior:'smooth'})">
+    Enter the experiment →
+  </button>
+  <div class="butterfly">🦋</div>
+</section>
+
+<p class="intro"><b>Hey, Sabina.</b> Yes, this little website was made specifically for you. Explore whatever catches your eye. No pressure. ❤️</p>
+
+<div class="heading" id="explore">
+  <h2>Choose your adventure</h2>
+  <p>Six ways to cause a little chaos.</p>
+</div>
+
+<section class="grid">
+<button class="tile" onclick="openPanel('personality')">
+  <span class="emoji">🧠</span><h3>Personality Lab</h3>
+  <p>Let's see what your answers reveal.</p><small>START QUIZ →</small>
+</button>
+<button class="tile" onclick="openPanel('challenge')">
+  <span class="emoji">🎯</span><h3>The Challenge</h3>
+  <p>Random challenges. Some suspicious.</p><small>TEST YOUR LUCK →</small>
+</button>
+<button class="tile" onclick="openPanel('mystery')">
+  <span class="emoji">🎁</span><h3>Mystery Box</h3>
+  <p>Something unexpected is waiting.</p><small>OPEN BOX →</small>
+</button>
+<button class="tile" onclick="openPanel('ask')">
+  <span class="emoji">💬</span><h3>Ask Me Anything</h3>
+  <p>Questions for the person behind this.</p><small>ASK AWAY →</small>
+</button>
+<button class="tile" onclick="openPanel('random')">
+  <span class="emoji">🎲</span><h3>Random Generator</h3>
+  <p>Conversation starters and date ideas.</p><small>GENERATE →</small>
+</button>
+<button class="tile" onclick="openPanel('duo')">
+  <span class="emoji">🪞</span><h3>Two-Person Game</h3>
+  <p>Compare answers and see who knows who.</p><small>PLAY TOGETHER →</small>
+</button>
+</section>
+
+<!-- PERSONALITY QUIZ -->
+<section class="panel hidden" id="personality">
+<button class="back" onclick="home()">← BACK</button>
+<div class="tag">01 / PERSONALITY LAB</div>
+<h2>Let's discover your vibe, Sabina.</h2>
+<p class="sub">Five questions. No wrong answers. 😂</p>
+<div class="progress"><span id="progress"></span></div>
+<div id="quiz"></div>
+</section>
+
+<!-- CHALLENGES -->
+<section class="panel hidden" id="challenge">
+<button class="back" onclick="home()">← BACK</button>
+<div class="tag">02 / THE CHALLENGE</div>
+<h2>Pick your level of chaos.</h2>
+<p class="sub">You can skip any challenge. The website isn't your boss.</p>
+<div class="box" id="challengeText">Ready for your first mission?</div>
+<div class="row">
+<button class="primary" onclick="challenge()">Give me a challenge</button>
+<button class="secondary" onclick="challenge()">Another one 😂</button>
+</div>
+</section>
+
+<!-- MYSTERY -->
+<section class="panel hidden" id="mystery">
+<button class="back" onclick="home()">← BACK</button>
+<div class="tag">03 / MYSTERY BOX</div>
+<h2>What's inside? 👀</h2>
+<p class="sub">One tap. One surprise.</p>
+<div class="box" id="mysteryText">The box is sealed...</div>
+<div class="row"><button class="primary" onclick="mystery()">Open the box ✨</button></div>
+</section>
+
+<!-- QUESTIONS -->
+<section class="panel hidden" id="ask">
+<button class="back" onclick="home()">← BACK</button>
+<div class="tag">04 / ASK ME SOMETHING</div>
+<h2>Your turn to put me on the spot.</h2>
+<p class="sub">Write a question you'd like me to answer.</p>
+<textarea class="field" id="questionInput" maxlength="300" placeholder="Something you've been curious to ask..."></textarea>
+<div class="row"><button class="primary" onclick="saveQuestion()">Save question</button></div>
+<p class="sub">Questions are saved in this browser only. They are not automatically sent to me.</p>
+<div id="questionList"></div>
+<div class="row"><button class="secondary" onclick="copyQuestions()">Copy questions to share</button></div>
+</section>
+
+<!-- RANDOM GENERATOR -->
+<section class="panel hidden" id="random">
+<button class="back" onclick="home()">← BACK</button>
+<div class="tag">05 / RANDOM GENERATOR</div>
+<h2>Conversation roulette.</h2>
+<p class="sub">Because "wyd" deserves retirement. 😂</p>
+<div class="box" id="randomText">Spin for a topic.</div>
+<div class="row"><button class="primary" onclick="randomTopic()">Spin the wheel 🎲</button></div>
+</section>
+
+<!-- TWO PERSON GAME -->
+<section class="panel hidden" id="duo">
+<button class="back" onclick="home()">← BACK</button>
+<div class="tag">06 / TWO-PERSON GAME</div>
+<h2>Same question. Two answers.</h2>
+<p class="sub">Sabina answers first. Then ask the other player the same question.</p>
+<div class="box" id="duoText">Who is more likely to laugh at the wrong moment?</div>
+<div class="row">
+<button class="primary" onclick="nextDuo()">Next question</button>
+<button class="secondary" onclick="copyDuo()">Copy question</button>
+</div>
+</section>
+
+<footer class="footer">
+Made with curiosity and a little effort. ✨<br>
+SABINA'S EXPERIMENT • VERSION 1.0
+</footer>
+</div>
+
+<script>
+const panels=['personality','challenge','mystery','ask','random','duo'];
+
+function openPanel(id){
+  panels.forEach(p=>document.getElementById(p).classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  if(id==='personality'&&!started)renderQuiz();
+  if(id==='ask')renderQuestions();
+}
+function home(){
+  panels.forEach(p=>document.getElementById(p).classList.add('hidden'));
+  document.getElementById('explore').scrollIntoView({behavior:'smooth'});
+}
+
+/* PERSONALITY QUIZ */
+const quiz=[
+ {q:"Your ideal free afternoon?",a:["Going somewhere spontaneous 🛵","Staying cosy with favourite people ☁️","Doing something productive ✨","Depends on the mood 😂"]},
+ {q:"When plans suddenly change?",a:["Adapt. We move.","Need a minute 😭","Find a better plan.","Pretend I'm unbothered."]},
+ {q:"Pick a compliment you'd love.",a:["You're effortlessly funny.","You make people comfortable.","You're full of surprises.","You see things beautifully."]},
+ {q:"In a group, you're usually...",a:["The entertainer.","The observer.","The organiser.","Different depending on the people."]},
+ {q:"Choose your adventure.",a:["A new place with no plan.","Good food and conversation.","Something exciting.","A peaceful day."]}
+];
+
+let qi=0,answers=[],started=false;
+
+function renderQuiz(){
+ started=true;
+ let q=quiz[qi];
+ document.getElementById('progress').style.width=(qi/quiz.length*100)+'%';
+ document.getElementById('quiz').innerHTML=`
+ <div class="small">QUESTION ${qi+1} OF ${quiz.length}</div>
+ <div class="question">${q.q}</div>
+ <div class="answers">
+ ${q.a.map((a,i)=>`<button class="answer ${answers[qi]===i?'selected':''}" onclick="choose(${i})">${a}</button>`).join('')}
+ </div>
+ <div class="row"><button class="primary" id="nextBtn" onclick="nextQuiz()" ${answers[qi]===undefined?'disabled':''}>${qi===4?'Reveal my result':'Next →'}</button></div>`;
+}
+function choose(i){answers[qi]=i;renderQuiz();}
+function nextQuiz(){
+ if(answers[qi]===undefined)return;
+ if(qi<4){qi++;renderQuiz();return;}
+ let counts=[0,0,0,0];
+ answers.forEach(a=>counts[a]++);
+ let result=counts.indexOf(Math.max(...counts));
+ let names=["The Spontaneous Spark ✨","The Comfort Person ☁️","The Quiet Plot Twist 🦋","The Unpredictable One 🎭"];
+ let descriptions=[
+ "You enjoy adventure and leaving room for the unexpected. Boring probably isn't your thing.",
+ "You value good company, comfort and moments that feel easy.",
+ "You notice details and bring your own kind of energy.",
+ "You don't fit neatly into one category. Your mood has its own schedule. 😂"
+ ];
+ document.getElementById('progress').style.width='100%';
+ document.getElementById('quiz').innerHTML=`
+ <div class="result"><div class="tag">YOUR UNOFFICIAL RESULT</div>
+ <h2>${names[result]}</h2><p>${descriptions[result]}</p>
+ <p class="small">Five answers. Zero scientific authority. 😂</p></div>
+ <div class="row"><button class="primary" onclick="restartQuiz()">Try again</button></div>`;
+}
+function restartQuiz(){qi=0;answers=[];renderQuiz();}
+
+/* CHALLENGE GENERATOR */
+const challenges=[
+"Send a voice note describing your day like breaking news. 🎙️",
+"Give me a convincing argument for why pineapple belongs on pizza. 🍍",
+"Describe your personality using only three emojis.",
+"Tell me one tiny thing that instantly improves your mood.",
+"Invent a movie title about your life.",
+"Choose a song that matches your current mood.",
+"What's a harmless hill you'll defend forever?",
+"Invent a ridiculous award and explain why you deserve it.",
+"Tell me a story using exactly five words.",
+"Give the other player a nickname based on their vibe. 😂"
+];
+function challenge(){
+ document.getElementById('challengeText').textContent=
+ challenges[Math.floor(Math.random()*challenges.length)];
+}
+
+/* MYSTERY BOX */
+const surprises=[
+"Small reminder: you don't have to be interesting every second. Just be yourself. 🌷",
+"Plot twist: the person who built this spent longer on the details than expected. 😂",
+"Your mission: find one reason to laugh today.",
+"Official finding: curiosity is a pretty good quality.",
+"Your energy deserves to be appreciated, not rushed. ✨",
+"Someone had a random idea and actually built a website for it. 👀"
+];
+function mystery(){
+ document.getElementById('mysteryText').textContent=
+ surprises[Math.floor(Math.random()*surprises.length)];
+}
+
+/* RANDOM TOPICS */
+const topics=[
+"Would you rather pause time or rewind ten minutes?",
+"What's a completely ordinary thing you find satisfying?",
+"What's one opinion you have that starts friendly debates?",
+"If we had a free afternoon and no plan, where would we end up?",
+"What's a small green flag people overlook?",
+"Which fictional world would you visit for one day?",
+"What's the funniest misunderstanding you've experienced?",
+"Unlimited travel or unlimited food?",
+"What's something you want to try at least once?",
+"What makes a conversation genuinely interesting?"
+];
+function randomTopic(){
+ document.getElementById('randomText').textContent=
+ topics[Math.floor(Math.random()*topics.length)];
+}
+
+/* TWO PERSON GAME */
+const duo=[
+"Who is more likely to laugh at the wrong moment?",
+"Who would survive longer without their phone?",
+"Who would suggest a spontaneous trip?",
+"Who takes longer to choose what to eat?",
+"Who remembers tiny details?",
+"Who would accidentally befriend a stranger?",
+"Who is more competitive during games?",
+"Who would get lost while insisting they know the way?"
+];
+let di=0;
+function nextDuo(){
+ di=(di+1)%duo.length;
+ document.getElementById('duoText').textContent=duo[di];
+}
+function copyDuo(){copyText(duo[di]);}
+
+/* QUESTIONS */
+function getQuestions(){
+ try{return JSON.parse(localStorage.getItem('sabinaQuestions')||'[]')}
+ catch(e){return []}
+}
+function renderQuestions(){
+ let qs=getQuestions();
+ document.getElementById('questionList').innerHTML=qs.length?
+ qs.map((q,i)=>`<div class="result" style="margin-top:9px">${escapeHTML(q)} <button onclick="deleteQuestion(${i})" style="float:right;border:0;background:none;color:#a36c96">×</button></div>`).join(''):
+ '<p class="small">No questions saved yet.</p>';
+}
+function saveQuestion(){
+ let input=document.getElementById('questionInput');
+ let q=input.value.trim();
+ if(!q)return;
+ let qs=getQuestions();
+ qs.unshift(q);
+ localStorage.setItem('sabinaQuestions',JSON.stringify(qs.slice(0,20)));
+ input.value='';
+ renderQuestions();
+}
+function deleteQuestion(i){
+ let qs=getQuestions();qs.splice(i,1);
+ localStorage.setItem('sabinaQuestions',JSON.stringify(qs));
+ renderQuestions();
+}
+function copyQuestions(){
+ let qs=getQuestions();
+ if(!qs.length){alert('Add a question first.');return;}
+ copyText('Questions from Sabina:\n'+qs.map((q,i)=>(i+1)+'. '+q).join('\n'));
+}
+function escapeHTML(s){
+ return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function copyText(t){
+ if(navigator.clipboard){
+  navigator.clipboard.writeText(t).then(()=>alert('Copied!')).catch(()=>alert(t));
+ }else alert(t);
+}
+</script>
+</body>
+</html>
+
